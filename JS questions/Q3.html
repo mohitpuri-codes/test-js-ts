@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="#">1</a>
+    <a href="#">2</a>
+    <div>
+      <a href="#">d</a>
+      <a href="#">d</a>
+      <div>
+        <a href="#">d</a>
+      </div>
+    </div>
+    <div>
+      <a href="#">d</a>
+      <a href="#">d</a>
+      <a href="#">d</a>
+    </div>
+    <a href="#">3</a>
+  </body>
+  <script>
+    // / getElementsByTagName accepts element and HTML tag.
+    let res = [];
+    getElementsByTagName(document.body, "a"); // returns array of all anchor tags from who are part of body element.
+
+    // function getElementsByTagName(htmlElement, htmlTag) {
+    //   // let findElementFrom = document.querySelector(htmlElement);
+    //   let findElementFrom = htmlElement;
+    //   let childrens = findElementFrom.children;
+    //   for (const element of childrens) {
+    //     if (element.tagName === htmlTag.toUpperCase()) {
+    //       res.push(element);
+    //     } else if (element.children?.length > 0) {
+    //       function repeat(child) {
+    //         for (const ele of element.children) {
+    //           if (ele.tagName === htmlTag.toUpperCase()) res.push(ele);
+    //           else if (ele.children?.length > 0) {
+    //             console.log("coni");
+
+    //             continue;
+    //           }
+    //           console.log(ele);
+
+    //           if (ele.children?.length > 0) repeat();
+    //           // getElementsByTagName(ele, htmlTag);
+    //         }
+    //       }
+    //       repeat();
+    //     }
+    //   }
+    //   console.log(res);
+    // }
+
+    function getElementsByTagName(htmlElement, htmlTag) {
+      let result = [];
+      function repeat(element) {
+        if (element.tagName === htmlTag.toUpperCase()) {
+          result.push(element);
+        }
+        for (const ele of element.children) {
+          repeat(ele);
+        }
+      }
+      repeat(htmlElement);
+      console.log(result);
+    }
+  </script>
+</html>
